@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="headerBasics">
+    <meta charset="UTF-8" />
+    <title>My apps</title>
+</th:block>
+
+<th:block th:fragment="someCSS">
+    <link th:if="${role == 'admin'}" rel="stylesheet" href="/css/admin.css" />
+    <link th:if="${role != 'admin'}" rel="stylesheet" href="/css/user.css" />
+</th:block>
+
+
+
+<th:block th:fragment="myLinks">
+    <script>
+        console.log("Graham");
+    </script>
+</th:block>
+
+</html>

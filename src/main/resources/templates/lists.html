@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: headerBasics"></div>
+    <div th:replace="fragments/header :: someCSS"></div>
+</head>
+<body>
+
+List of Names:
+<ul>
+    <li th:each="name : ${listOfNames}" th:text="${name}"></li>
+</ul>
+
+<input id="myHiddenData" type="hidden" th:value="${listOfNames}" />
+
+<div th:if="${true}">
+    This gets to be displayed
+</div>
+There's a hidden line below this text
+<div th:if="${!true}">
+    This does not get displayed
+</div>
+There's a hidden line above this text
+
+<div th:replace="fragments/header :: myLinks"></div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+</head>
+<body class="container-fluid">
+
+<div th:replace="fragments/navbar :: unauthNavbar"></div>
+
+<div class="row mt-4">
+    <div class="col" th:each="post : ${posts}">
+        <div class="text-center">
+            <h2 th:text="${post.title}"></h2>
+            <p th:text="${post.body}"></p>
+            <button class="btn btn-primary">Comment</button>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/scripts :: scripts"></div>
+
+</body>
+</html>

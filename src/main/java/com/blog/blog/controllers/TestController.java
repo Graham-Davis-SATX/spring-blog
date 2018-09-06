@@ -10,6 +10,8 @@ import java.util.List;
 @Controller
 public class TestController {
 
+
+
     @RequestMapping(path = "/hi", method = RequestMethod.GET)
     @ResponseBody
     private String sayHi(@RequestParam(value = "isLoud, required = false") boolean isLoud) {

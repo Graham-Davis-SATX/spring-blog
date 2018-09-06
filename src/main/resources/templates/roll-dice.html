@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: headerBasics"></div>
-    <div th:replace="fragments/header :: someCSS"></div>
+    <div th:replace="fragments/head :: head('Default')"></div>
 </head>
 <body>
+
+<div th:replace="fragments/navbar :: unauthNavbar"></div>
+
 <div class="container">
+
     <div class="row">
-        <div class="col d-flex justify-content-center">
+        <div class="col d-flex justify-content-center mt-3">
             <h1>Guess a number</h1>
         </div>
     </div>
+
     <div class="row">
         <div class="col d-flex justify-content-center">
-            <a href="/roll-dice/1">1</a>
-            <a href="/roll-dice/2">2</a>
-            <a href="/roll-dice/3">3</a>
-            <a href="/roll-dice/4">4</a>
-            <a href="/roll-dice/5">5</a>
-            <a href="/roll-dice/6">6</a>
+            <h3>
+                <a href="/roll-dice/1"><img src="/img/rollDice/64px-Dice-1-b.svg.png" alt="" width="50px"/></a>
+                <a href="/roll-dice/2"><img src="/img/rollDice/64px-Dice-2-b.svg.png" alt="" width="50px"/></a>
+                <a href="/roll-dice/3"><img src="/img/rollDice/64px-Dice-3-b.svg.png" alt="" width="50px"/></a>
+                <a href="/roll-dice/4"><img src="/img/rollDice/64px-Dice-4-b.svg.png" alt="" width="50px"/></a>
+                <a href="/roll-dice/5"><img src="/img/rollDice/64px-Dice-5-b.svg.png" alt="" width="50px"/></a>
+                <a href="/roll-dice/6"><img src="/img/rollDice/64px-Dice-6-b.svg.png" alt="" width="50px"/></a>
+            </h3>
         </div>
     </div>
-    <div class="row">
-        <div class="col d-flex justify-content-center">
-            <div th:if="${guess}">
-                <h2>You guessed, <span th:text="${guess}"></span></h2>
-                <h2>The computer rolled a <span th:text="${n}"></span></h2>
+
+    <div th:if="${guess}">
+        <div class="row py-5">`
+            <div class="col-lg order-1 d-flex justify-content-center"><h3 class="text-center">You guessed: <span th:text="${guess}"></span></h3></div>
+            <div class="col-lg order-3 d-flex justify-content-center"><h3 class="text-center">The computer rolled a: <span th:text="${n}"></span></h3></div>
+            <div class="col order-2 d-flex justify-content-center">
                 <div th:if="${guess} != ${n}">
-                    <h3>Try again!</h3>
+                    <h4 class="wrong">Try again!</h4>
                 </div>
                 <div th:if="${guess} == ${n}">
-                    <h3>You got it!</h3>
+                    <h4 class="right">You got it!</h4>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div th:replace="fragments/footer :: footerBasics"></div>
-
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/scripts :: scripts"></div>
 </body>
 </html>

@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class HomeController {
 
-    @GetMapping("/hello/{name}")
-    public String sayHello(@PathVariable String name, Model model) {
-        model.addAttribute("name", name);
+
+    @GetMapping("/home")
+    public String home() {
         return "home";
     }
 
-
+    @GetMapping("/hello/{name}")
+    public String sayHello(@PathVariable String name, Model model) {
+        model.addAttribute("name", name);
+        return "hello";
+    }
 
 }

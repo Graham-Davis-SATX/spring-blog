@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: headerBasics"></div>
-    <div th:replace="fragments/header :: homeCSS"></div>
+    <div th:replace="fragments/head :: head('Home')"></div>
 </head>
 <body>
 
-    <h1>Hello, <span th:text="${name}">World</span>!</h1>
+    <div th:replace="fragments/navbar :: unauthNavbar"></div>
 
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">The Spring Framework is an application framework and inversion of control container for the Java platform.</p>
+        <hr class="my-4" />
+        <p>The framework's core features can be used by any Java application, but there are extensions for building web applications on top of the Java EE (Enterprise Edition) platform.</p>
+        <p class="lead">
+            <a class="btn btn-lg jumbotron-btn" href="https://spring.io/" target="_blank" role="button">Learn more</a>
+        </p>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="fragments/scripts :: scripts"></div>
 </body>
 </html>

@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: headerBasics"></div>
-    <div th:replace="fragments/header :: someCSS"></div>
+    <div th:replace="fragments/head :: head('Default')"></div>
 </head>
 <body>
 
-List of Names:
-<ul>
-    <li th:each="name : ${listOfNames}" th:text="${name}"></li>
-</ul>
+    <div th:replace="fragments/navbar :: unauthNavbar"></div>
 
-<input id="myHiddenData" type="hidden" th:value="${listOfNames}" />
 
-<div th:if="${true}">
-    This gets to be displayed
-</div>
-There's a hidden line below this text
-<div th:if="${!true}">
-    This does not get displayed
-</div>
-There's a hidden line above this text
+    List of Names:
+    <ul>
+        <li th:each="name : ${listOfNames}" th:text="${name}"></li>
+    </ul>
 
-<div th:replace="fragments/header :: myLinks"></div>
+    <input id="myHiddenData" type="hidden" th:value="${listOfNames}" />
+
+    <div th:if="${true}">
+        This gets to be displayed
+    </div>
+    There's a hidden line below this text
+    <div th:if="${!true}">
+        This does not get displayed
+    </div>
+    There's a hidden line above this text
+
+    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="fragments/scripts :: scripts"></div>
 
 </body>
 </html>

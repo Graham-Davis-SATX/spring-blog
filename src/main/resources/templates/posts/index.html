@@ -7,12 +7,16 @@
 
 <div th:replace="fragments/navbar :: unauthNavbar"></div>
 
-<div class="row mt-4">
-    <div class="col" th:each="post : ${posts}">
-        <div class="text-center">
-            <h2 th:text="${post.title}"></h2>
-            <p th:text="${post.body}"></p>
-            <button class="btn btn-primary spring-btn">Comment</button>
+<div class="row p-0 d-flex justify-content-center mt-4">
+    <div class="col-3 p-0 d-flex justify-content-center" th:each="post : ${posts}">
+        <div class="card text-center mb-4 p-0" style="width: 20rem;">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${post.title}"></h5>
+                <p class="card-text" th:text="${post.body}"></p>
+                <a href="/#" class="btn-makeshift">Edit</a>
+                <a th:href="'/posts/' + ${post.id + 1}" class="btn-makeshift">View</a>
+
+            </div>
         </div>
     </div>
 </div>

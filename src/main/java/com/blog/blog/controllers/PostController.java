@@ -6,39 +6,52 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLOutput;
 
 @Controller
 public class PostController {
 
-    private PostService postSvc;
+    private final PostService postSvc;
 
     public PostController(PostService postSvc) {
         this.postSvc = postSvc;
     }
 
+    @GetMapping("/posts/{id}")
+    public String show(@PathVariable long id, Model viewModel) {
+        Post post = postSvc.findOne(id);
+        viewModel.addAttribute("post", post);
+        return "posts/show";
+    }
+
     @GetMapping("/posts")
-    public String index(Model viewModel) {
+    public String showAllPosts(Model viewModel) {
         viewModel.addAttribute("posts", postSvc.findAll());
         return "posts/index";
     }
 
-    @GetMapping("/posts/{id}")
-    public String show(@PathVariable long id, Model viewModel) {
-        viewModel.addAttribute("post", postSvc.findOne(id));
-        return "posts/show";
-    }
-
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String show() {
-        return "Showing form to create new post!";
+    public String postCreateForm(Model viewModel) {
+        viewModel.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String create() {
-        return "New post was created!";
+    public String insertPost(@ModelAttribute Post post) {
+        postSvc.save(post);
+        return "redirect:/posts";
     }
+
+//    @GetMapping("/posts/${id}/edit")
+//    public String postEditForm(@PathVariable long id, Model viewModel) {
+//        viewModel.addAttribute("post", postSvc.findOne(id));
+//        return "posts/create";
+//    }
+
+//    @GetMapping("/posts/${id}/edit")
+//    public String updatePost(@PathVariable Post post) {
+//        System.out.println("Post updated!");
+//        return "redirect:/posts";
+//    }
+
 }

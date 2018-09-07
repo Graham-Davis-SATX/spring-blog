@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/head :: head('Create a New Ad')"></div>
+    <div th:replace="fragments/head :: head('Create a New Post')"></div>
 </head>
 <body>
 
@@ -12,11 +12,11 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form th:action="'/ads/save'" th:method="post" th:object="${ad}">
-                    <label for="">Title</label>
-                    <input type="text" th:field="*{title}" />
-                    <label for="">Description</label>
-                    <input type="text" th:field="*{description}" />
+                <form th:action="'/posts/create'" th:method="POST" th:object="${post}">
+                    <label for="title">Title</label>
+                    <input id="title" type="text" placeholder="Enter Title" th:field="*{title}" />
+                    <label for="body">Body</label>
+                    <input id="body" type="text" placeholder="Enter a Description" th:field="*{body}" />
                     <button class="btn btn-primary">Submit</button>
                 </form>
             </div>

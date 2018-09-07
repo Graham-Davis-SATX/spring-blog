@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: unauthNavbar"></div>
+
+<h1>Create an Ad</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="/ads/save" method="post">
+                    <label for="">Title</label>
+                    <input type="text" name="title" />
+                    <label for="">Description</label>
+                    <input type="text" name="desc" />
+                    <button class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="fragments/scripts :: scripts"></div>
+
+</body>
+</html>

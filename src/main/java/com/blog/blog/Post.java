@@ -1,4 +1,4 @@
-package com.blog.blog.models;
+package com.blog.blog;
 
 public class Post {
 

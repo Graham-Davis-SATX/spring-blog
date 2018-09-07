@@ -11,7 +11,7 @@
     <div class="col" th:each="post : ${posts}">
         <div class="text-center">
             <h2 th:text="${post.title}"></h2>
-            <p th:text="${post.description}"></p>
+            <p th:text="${post.body}"></p>
             <button class="btn btn-primary spring-btn">Comment</button>
         </div>
     </div>

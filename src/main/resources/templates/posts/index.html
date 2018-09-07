@@ -3,7 +3,7 @@
 <head>
     <div th:replace="fragments/head :: head('Default')"></div>
 </head>
-<body class="container-fluid">
+<body>
 
 <div th:replace="fragments/navbar :: unauthNavbar"></div>
 
@@ -12,7 +12,7 @@
         <div class="text-center">
             <h2 th:text="${post.title}"></h2>
             <p th:text="${post.body}"></p>
-            <button class="btn btn-primary">Comment</button>
+            <button class="btn btn-primary spring-btn">Comment</button>
         </div>
     </div>
 </div>

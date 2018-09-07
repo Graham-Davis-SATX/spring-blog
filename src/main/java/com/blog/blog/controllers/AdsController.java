@@ -4,10 +4,7 @@ import com.blog.blog.models.Ad;
 import com.blog.blog.services.AdsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AdsController {
@@ -32,16 +29,15 @@ public class AdsController {
     }
 
     @GetMapping("/ads/create")
-    public String showCreateForm() {
+    public String showCreateForm(Model viewModel) {
+            viewModel.addAttribute("ad", new Ad("Awesome Pug",  "He is grunty"));
         return "ads/create";
     }
 
     @PostMapping("/ads/save")
-    public String createAd(@RequestParam(name = "title") String title, @RequestParam(name = "desc") String description){
-//        System.out.println("title = " + title);
-//        System.out.println("description = " + description);
-        Ad ad = adsSvc.save(new Ad(title, description));
-        return "redirect:/ads/" + ad.getId();
+    public String createAd(@ModelAttribute Ad ad){
+        adsSvc.save(ad);
+        return "redirect:/ads";
     }
 
 }

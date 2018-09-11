@@ -8,6 +8,7 @@ import java.util.List;
 
 @Service
 public class AdsService {
+
     private List<Ad> ads;
 
     public AdsService() {
@@ -15,7 +16,7 @@ public class AdsService {
             createAds();
     }
 
-    public Ad save(Ad ad){
+    public Ad save(Ad ad) {
         ad.setId(ads.size() + 1);
         ads.add(ad);
         return ad;

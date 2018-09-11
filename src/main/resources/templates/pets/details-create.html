@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: unauthNavbar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Add Pet Details</h1>
+
+            <form th:action="'/pets/' + ${id} + '/details/create'" th:method="POST" th:object="${petDetail}">
+                <div class="form-group">
+                    <label for="sterile">
+                        Is the pet sterile?
+                        <input id="sterile" class="form-control" type="checkbox"  th:field="*{sterile}" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Please enter the approximate pet weight in ounces</label>
+                    <input id="weight" class="form-control" type="number" min="1" max="1000"  th:field="*{weightInOunces}" />
+                </div>
+                <div class="form-group">
+                    <label for="personalityDescription">Please describe the pet's personality.</label>
+                    <textarea id="personalityDescription" class="form-control"  rows = "20" cols = "80" th:field="*{personalityDescription}" placeholder="Enter description"></textarea>
+                </div>
+                <button class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/scripts :: scripts"></div>
+
+</body>
+</html>

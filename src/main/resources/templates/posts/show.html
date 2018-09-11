@@ -7,11 +7,14 @@
 
 <div th:replace="fragments/navbar :: unauthNavbar"></div>
 
-<h1>This is just one post</h1>
-<h2 th:text="${post.title}"></h2>
-<p th:text="${post.body}"></p>
+    <h1>This is just one post</h1>
+    <h2 th:text="${post.title}"></h2>
+    <p th:text="${post.body}"></p>
+    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn-makeshift">Edit</a>
 
-<div th:replace="fragments/footer :: footer"></div>
+
+
+    <div th:replace="fragments/footer :: footer"></div>
 <div th:replace="fragments/scripts :: scripts"></div>
 
 </description>

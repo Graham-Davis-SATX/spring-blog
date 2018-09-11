@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: unauthNavbar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!-- =================== PET INFO =================== -->
+            <h1>Pet Information for <span th:text="${pet.name}"></span></h1>
+            <p th:text="${'Pet age: ' + pet.age + ' years old'}"></p>
+            <p th:text="${'Species: ' + pet.species}"></p>
+
+
+            <!-- =================== PET DETAIL INFO =================== -->
+
+            <th:block th:if="${pet.petDetail != null}">
+            <h3>Pet Details</h3>
+            <p th:text="${'Behavior: ' + pet.petDetail.personalityDescription}"></p>
+            <p th:text="${'Is sterile: ' + pet.petDetail.sterile}"></p>
+            <p th:text="${'Weight in ounces: ' + pet.petDetail.weightInOunces}"></p>
+            <a class="btn btn-warning" th:href="'/pets/' + ${pet.id} + '/details/edit'">Edit pet details</a>
+            <form th:action="'/pets/' + ${id} + '/details/delete'" th:method="POST">
+            <button class="btn btn-danger">Delete Details</button>
+            </form>
+            </th:block>
+            <th:block th:if="${pet.petDetail == null}">
+            <h3>No Pet Details</h3>
+            <a th:href="'/pets/' + ${pet.id} + '/details/create'">Add pet details</a>
+            </th:block>
+
+
+            <!-- =================== PET CHEW TOY INFO =================== -->
+
+            <th:block th:if="${pet.chewToys.size() > 0}">
+
+            <hr />
+
+            <h3>Chew Toys of this Pet...</h3>
+
+            <div th:each="chewToy : ${pet.chewToys}" class="card">
+
+            <h5 th:text="${chewToy.name}"></h5>
+            <p th:text="${'Is destroyed: ' + chewToy.destroyed}"></p>
+            <p th:text="${'Brand: ' + chewToy.brand}"></p>
+            <p th:text="${'Description: ' + chewToy.description}"></p>
+
+            </div>
+
+            </th:block>
+
+
+            <!-- =================== PET VET INFO =================== -->
+
+            <!--<th:block th:if="${pet.vets.size() > 0}">-->
+
+            <!--<hr />-->
+
+            <!--<h3>The Vets of this Pet...</h3>-->
+
+            <!--<div th:each="vet : ${pet.vets}" class="card">-->
+
+            <!--<h5 th:text="${vet.name}"></h5>-->
+            <!--<p th:text="${'Address: ' + vet.address}"></p>-->
+            <!--<p th:text="${'Phone: ' + vet.name}"></p>-->
+
+            <!--</div>-->
+
+            <!--</th:block>-->
+
+            <!--<a class="btn btn-warning" th:href="'/pets/' + ${pet.id} + '/vets/edit'">Edit Vets</a>-->        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/scripts :: scripts"></div>
+
+</body>
+</html>

@@ -1,24 +1,41 @@
 package com.blog.blog.models;
 
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "posts")
 public class Post {
 
+    @Id @GeneratedValue
     private long id;
+
+    @Column (nullable = false)
     private String title;
+
+    @Column (nullable = false)
     private String body;
 
+
+    // about to create a post
     public Post() {
     }
 
+    // created a post but id hasn't been autoset yet
     public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
 
+    // post has been created and id set - I now know everything
     public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
     }
+
+
 
     public String getTitle() {
         return title;

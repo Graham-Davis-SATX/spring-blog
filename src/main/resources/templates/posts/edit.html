@@ -12,12 +12,24 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <form th:action="@{}" th:method="POST" th:object="${post}">
-                    <label for="title">Title</label>
-                    <input id="title" type="text" placeholder="Enter Title" th:field="*{title}" />
-                    <label for="body">Body</label>
-                    <input id="body" type="text" placeholder="Enter a Description" th:field="*{body}" />
-                    <button class="btn btn-primary">Submit</button>
+                <form th:action="@{/posts/{id}/edit(id = ${post.id})}" th:method="POST" th:object="${post}">
+
+
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" id="title" type="text" placeholder="Enter title"  th:field="*{title}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="body">Body</label>
+                        <textarea class="form-control" id="body" rows="3" placeholder="Enter body" th:field="*{body}"></textarea>
+                    </div>
+                    <button class="btn btn-success">Submit</button>
+                    <form th:action="@{/posts/delete}" th:method="post">
+                        <input type="hidden" th:value="${post.id}" name="id" />
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+
+
                 </form>
             </div>
         </div>

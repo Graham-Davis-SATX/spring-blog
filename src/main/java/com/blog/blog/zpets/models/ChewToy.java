@@ -1,4 +1,4 @@
-package com.blog.blog.pets.models;
+package com.blog.blog.zpets.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,13 +20,11 @@ public class ChewToy implements Serializable {
 
     private String description;
 
-    // relationships...
+    // add relationships, constructors, getters and setters...
 
     @ManyToOne
-    @JoinColumn(name = "pet_id")
+    @JoinColumn (name = "pet_id")
     private Pet pet;
-
-    // add relationships, constructors, getters and setters...
 
     public ChewToy() {
     }

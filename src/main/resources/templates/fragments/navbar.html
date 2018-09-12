@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-
-<th:block th:fragment="unauthNavbar">
-
-
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <!-- Fixed navbar -->
+    <nav th:fragment="unauthNavbar" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="/home">
             <img src="/img/navbar/icon-spring-cloud.svg" width="45" class="d-inline-block align-top" alt="" />
             Spring
@@ -61,6 +58,4 @@
         </div>
     </nav>
 
-
-</th:block>
 </html>

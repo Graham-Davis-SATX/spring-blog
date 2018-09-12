@@ -1,5 +1,4 @@
-package com.blog.blog.pets.models;
-
+package com.blog.blog.zpets.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,17 +27,27 @@ public class Pet implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
     private List<ChewToy> chewToys;
 
-    public Pet (){
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable (
+            name = "pets_vets",
+            joinColumns={@JoinColumn(name = "vet_id")},
+            inverseJoinColumns={@JoinColumn(name = "pet_id")}
+    )
+    private List<Vet> vets;
+
+
+    // constructors/getters/setters
+    public Pet() {
     }
 
-    public Pet(String name, int age, String species, PetDetail petDetail, List<ChewToy> chewToys) {
+    public Pet(String name, int age, String species, PetDetail petDetail, List<ChewToy> chewToys, List<Vet> vets) {
         this.name = name;
         this.age = age;
         this.species = species;
         this.petDetail = petDetail;
         this.chewToys = chewToys;
+        this.vets = vets;
     }
-
 
     public long getId() {
         return id;
@@ -86,5 +95,13 @@ public class Pet implements Serializable {
 
     public void setChewToys(List<ChewToy> chewToys) {
         this.chewToys = chewToys;
+    }
+
+    public List<Vet> getVets() {
+        return vets;
+    }
+
+    public void setVets(List<Vet> vets) {
+        this.vets = vets;
     }
 }

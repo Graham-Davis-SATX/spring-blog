@@ -3,19 +3,30 @@
 <head>
     <div th:replace="fragments/head :: head('Default')"></div>
 </head>
-<description>
+<body>
+<nav th:replace="fragments/navbar :: unauthNavbar"></nav>
 
-<div th:replace="fragments/navbar :: unauthNavbar"></div>
+<main>
 
-    <h1>This is just one post</h1>
-    <h2 th:text="${post.title}"></h2>
-    <p th:text="${post.body}"></p>
-    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn-makeshift">Edit</a>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>This is just one post</h1>
+                <h2 th:text="${post.title}"></h2>
+                <p th:text="${post.body}"></p>
+                <p th:text="${post.user.username}"></p>
+                <p th:text="'Created by: ' + ${post.user.email}"></p>
+                <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn-makeshift">Edit</a>
+            </div>
+        </div>
+    </div>
 
+</main>
 
-
-    <div th:replace="fragments/footer :: footer"></div>
-<div th:replace="fragments/scripts :: scripts"></div>
-
-</description>
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
 </html>
+
+
+

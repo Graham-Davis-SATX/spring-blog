@@ -1,7 +1,6 @@
 package com.blog.blog.controllers;
 
 import com.blog.blog.models.Ad;
-import com.blog.blog.repositories.AdRepository;
 import com.blog.blog.services.AdSvc;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +11,9 @@ import java.util.List;
 @Controller
 public class JpaTestController {
 
-//    AdRepository adDao;
+//    AdRepo adDao;
 //
-//    public JpaTestController(AdRepository adDao) {
+//    public JpaTestController(AdRepo adDao) {
 //        this.adDao = adDao;
 //    }
 

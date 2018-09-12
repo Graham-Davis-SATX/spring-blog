@@ -9,10 +9,9 @@
 
     <div class="container">
         <div class="row">
+            <h1>Add Pet Details</h1>
             <div class="col">
-                <h1>Add Pet Details</h1>
-
-                <form th:action="'/pets/' + ${id} + '/details/create'" th:method="POST" th:object="${petDetail}">
+                <form th:action="'/pets/' + ${petDetail.id} + '/details/edit'" th:method="POST" th:object="${petDetail}">
                     <div class="form-group">
                         <label for="sterile">
                             Is the pet sterile?

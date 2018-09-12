@@ -16,9 +16,9 @@ public class Ad {
     @Column(nullable = false)
     private String description;
 
-//    @Column(columnDefinition = "VARCHAR(200) NOT NULL DEFAULT 'Buy NOW!!'")
-//    private String callToAction;
-//
+    // relationships
+
+    // constructors/getters/setters
 
     public Ad() {
     }
@@ -28,15 +28,12 @@ public class Ad {
         this.description = description;
     }
 
-    public Ad(long id, String title, String description) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
+    public long getId() {
+        return id;
     }
 
-    @Override
-    public String toString() {
-        return String.format("ID: %d, TITLE: %s, DESCRIPTION: %s", id, title, description);
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -53,13 +50,5 @@ public class Ad {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 }

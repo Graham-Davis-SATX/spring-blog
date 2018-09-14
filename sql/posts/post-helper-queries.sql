@@ -7,6 +7,7 @@ USE v_blog_db;
 SHOW TABLES;
 
 DESCRIBE user;
+DESCRIBE post;
 
 SELECT * FROM user;
 

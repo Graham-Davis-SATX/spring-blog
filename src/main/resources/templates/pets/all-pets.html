@@ -8,14 +8,17 @@
 <main>
 
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>These are all the pets...</h1>
+        <h1>These are all the pets...</h1>
 
-                <div th:each="pet : ${pets}">
-                    <h2 th:text="${pet.name}"></h2>
-                    <p th:text="${pet.age}"></p>
-                    <p th:text="${pet.species}"></p>
+        <div class="row p-0 d-flex justify-content-center mt-4">
+            <div class="col-3 p-0 d-flex justify-content-center" th:each="pet : ${pets}">
+                <div class="card text-center mb-4 p-0" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${pet.name}"></h5>
+                        <p class="card-text" th:text="${pet.species}"></p>
+                        <p class="card-text" th:text="${pet.age} + ' years old'"></p>
+                        <a th:href="'/pets/' + ${pet.id}" class="btn-makeshift">View</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,5 +29,3 @@
 <footer th:replace="fragments/footer :: footer"></footer>
 <script th:replace="fragments/scripts :: scripts"></script>
 </html>
-
-

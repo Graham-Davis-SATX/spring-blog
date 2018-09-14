@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <div th:replace="fragments/head :: head('Default')"></div>
 </head>
 <body>
-$END$
+
+<nav th:replace="fragments/navbar :: unauthNavbar"></nav>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Pet Vets</h1>
+
+                <hr />
+
+                <h3>Change Vets Current</h3>
+
+                <form th:action="'/pets/' + ${pet.id} + '/vets/edit'" th:method="POST" th:object="${pet}">
+                    <th:block th:each="vet : ${vets}">
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" th:field="*{vets}" th:value="${vet.id}" />
+                                <span th:text="${vet.name}"></span>
+                            </label>
+                        </div>
+                    </th:block>
+
+                    <button class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:replace="fragments/scripts :: scripts"></script>
+
 </body>
 </html>

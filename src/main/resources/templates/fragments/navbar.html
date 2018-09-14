@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
     <!-- Fixed navbar -->
     <nav th:fragment="unauthNavbar" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -15,6 +16,11 @@
 
 
             <ul class="navbar-nav">
+
+
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a href="#" class="nav-link">Welcome, <span th:text="${#authentication.principal.username}"></span></a>
+                </li>
 
 
 
@@ -44,6 +50,14 @@
                     </div>
                 </li>
 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="petsNavbarDropdownMenuLink" data-toggle="dropdown">Pets</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/pets">View All Pets</a>
+                        <a class="dropdown-item" href="/pets/create">Create a New Pet</a>
+                    </div>
+                </li>
+
 
 
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="projectsNavbarDropdownMenuLink" data-toggle="dropdown">Projects</a>
@@ -53,9 +67,18 @@
                         <a class="dropdown-item" href="#">Something Else Here</a>
                     </div>
                 </li>
-
             </ul>
         </div>
+        <ul class="navbar-nav d-flex justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn">Logout</button>
+                </form>
+            </li>
+        </ul>
     </nav>
 
 </html>

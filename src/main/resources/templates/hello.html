@@ -3,16 +3,20 @@
 <head>
     <div th:replace="fragments/head :: head('Default')"></div>
 </head>
-<description>
-
-    <div th:replace="fragments/navbar :: unauthNavbar"></div>
-
-    <h1>Hello, <span th:text="${name}">World</span>!</h1>
-
-    <div th:replace="fragments/footer :: footer"></div>
-    <div th:replace="fragments/scripts :: scripts"></div>
-
-</description>
+<body>
+<nav th:replace="fragments/navbar :: unauthNavbar"></nav>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Hello, <span th:text="${name}">World</span>!</h1>
+            </div>
+        </div>
+    </div>
+</main>
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:replace="fragments/scripts :: scripts"></script>
+</body>
 </html>
 
 

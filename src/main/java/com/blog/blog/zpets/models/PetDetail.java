@@ -1,4 +1,4 @@
-package com.blog.blog.pets.models;
+package com.blog.blog.zpets.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,6 +19,8 @@ public class PetDetail implements Serializable {
 
     @Column(name = "weight_in_ounces")
     private int weightInOunces;
+
+    // add relationships, constructors, getters and setters...
 
     @OneToOne
     private Pet pet;

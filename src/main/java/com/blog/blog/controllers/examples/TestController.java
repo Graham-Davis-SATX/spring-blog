@@ -1,4 +1,4 @@
-package com.blog.blog.controllers;
+package com.blog.blog.controllers.examples;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

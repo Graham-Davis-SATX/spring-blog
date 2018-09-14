@@ -1,0 +1,12 @@
+SHOW DATABASES;
+
+DROP DATABASE IF EXISTS v_blog_db;
+
+USE v_blog_db;
+
+SHOW TABLES;
+
+DESCRIBE ads;
+
+SELECT * FROM ads;
+

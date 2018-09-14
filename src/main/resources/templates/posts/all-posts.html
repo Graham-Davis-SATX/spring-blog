@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/head :: head('Default')"></div>
+</head>
+<body>
+
+<nav th:replace="fragments/navbar :: unauthNavbar"></nav>
+
+<main>
+    <div class="row p-0 d-flex justify-content-center mt-4">
+        <div class="col-3 p-0 d-flex justify-content-center" th:each="post : ${posts}">
+            <div class="card text-center mb-4 p-0" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${post.title}"></h5>
+                    <p class="card-text" th:text="${post.body}"></p>
+                    <a th:href="'/posts/' + ${post.id} + '/edit'" class="btn-makeshift">Edit</a>
+                    <a th:href="'/posts/' + ${post.id}" class="btn-makeshift">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+<script th:replace="fragments/scripts :: scripts"></script>
+
+</body>
+</html>

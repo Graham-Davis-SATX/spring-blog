@@ -1,7 +1,7 @@
 package com.blog.blog.services;
 
 import com.blog.blog.models.Ad;
-import com.blog.blog.repositories.AdRepository;
+import com.blog.blog.repositories.AdRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
 @Service
 public class AdSvc {
 
-    AdRepository adDao;
+    AdRepo adDao;
 
-    public AdSvc(AdRepository adDao) {
+    public AdSvc(AdRepo adDao) {
         this.adDao = adDao;
     }
 
